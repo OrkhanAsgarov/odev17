@@ -10,5 +10,111 @@ const para_birimi = "TL";
 const toplam_tutar = `Toplam: ${birim_fiyat * adet} ${para_birimi}`;
 console.log(toplam_tutar);
 
+//------------------------------------------------------------------
+//Shorthand Property Names (kısayol obje anahtarı isimleri)
+const isim = "Orhan";
+const yas = "33";
+const kullanici_objesi = { isim, yas };
+console.log(kullanici_objesi);
+
+function Sayac({ baslangicDegeri, adim }) {
+  // Burada object destruction var.
+  const [sayac, setSayac] = useCounter({ baslangicDegeri, adim }); // Burada kısayol kullanım var.
+  return <button onClick={setSayac}>{sayac}</button>;
+}
+
+//--------------------------------------------------------------------------
+//Arrow Functions (oklu fonksiyon ifadeleri)
+//normal fonksiyon
+function topla(sayi1, sayi2) {
+  return sayi1 + sayi2;
+}
+console.log(topla(3, 10));
+
+//Oklu fonksiyon ifadeleri ile şöyle yazılabilir:
+const topla1 = (sayi3, sayi4) => sayi3 + sayi4;
+console.log(topla1(5, 10));
+
+// Fonksiyon tek bir parametre alıyorsa eğer parantezleri de kullanmamıza gerek yok.
+const kare = (a) => a * a;
+console.log(kare(2));
+
+//--------------------------------------------------------------------------------------
+//Object/Array Destructuring (obje/dizilerin parçalarına bölünüp değişkenlere atanması)
+const kullanici = { isim: "Orhan", yas: 33 };
+const { isim, yas } = kullanici;
+
+console.log(isim);
+console.log(yas);
+
+const kullanici1 = { isim1: "Orhan", yas1: 33, sehir: "istanbul" };
+const {isim1, ...kalanlar} = kullanici1;
 
 
+console.log(isim1);
+console.log(kalanlar);
+
+//Bir React örneği: Prop'lardan alınan veriler olay yerinde parçalanıp değişkenlere atanabilir.
+function kullaniciYasGoster({isim2,yas2}) {
+  return `${isim2} isimli kullanıcı ${yas2} yaşındadır.` 
+}
+
+
+//-----------------------------------------------------------------------------------------------
+//Dizilerde destructuring yaparken ise elemanların sırası önemlidir. İlk eleman, ilk girilen değişkene atanır.
+const sayilar =[1,2,3,4,5];
+const[bir, iki, uc, dort, bes] = sayilar;
+console.log({bir, iki, uc, dort, bes});
+
+const sayilar1 =[1,2,3,4,5];
+const[bir1, ...kalanlar1] = sayilar1;
+console.log({bir1, kalanlar1});
+
+//const [...ilkler, bes] = sayilar; // Uncaught SyntaxError: Rest element must be last element
+
+
+//-----------------------------------------------------------------------------
+//Parameter Defaults (varsayılan parametreler değerleri)
+topla(3, 5);
+topla(3);
+topla();
+
+function topla(sayi1 = 0, sayi2 = 0) {
+  return sayi1 + sayi2;
+}
+
+const STATE_BASLANGICI = {yukleniyor: false, yazilar; [] };
+const reducer = (state = STATE_BASLANGICI, action) => {
+  return state;
+};
+
+//---------------------------------------------------------------------------------
+//Rest/Spread Operator (toparlama/yayma operatörü)
+let kullanici = { isim: "Mehmet", yas: 35, sehir: "İstanbul" };
+//kullanici.sehir ="Ankara";
+kullanici = { ...kullanici, sehir: "Ankara" };
+console.log(kullanici);
+
+//redux reducer
+INITAL_STATE = {
+  yukleniyor: false,
+  hataMesaji: "",
+  arabalar: ["Mercedes", "BMW", "Audi"]
+};
+
+const reducer = (state = INITAL_STATE, action) => {
+  switch (action.type) {
+    case "ARABA_EKLE":
+      return { ...state, arabalar: [...state.arabalar, action.payload] };
+    default:
+      return state;
+  }
+};
+
+//---------------------------------------------------------------------------------
+//ESModules (ES modülleri)
+
+
+
+
+  
