@@ -24,3 +24,13 @@ https://hdd4q3.csb.app/
 https://codesandbox.io/s/great-hermann-hdd4q3?file=/src/index.js
 //********************************************************************************
 //ESModules (ES modülleri)
+https://tc0m11.csb.app/
+https://codesandbox.io/s/zealous-almeida-tc0m11?file=/src/index.js:355-658
+//********************************************************************************
+//Array Methods (dizi metodları)
+https://x6jc3g.csb.app/
+https://codesandbox.io/s/stupefied-rubin-x6jc3g?file=/src/index.js
+//********************************************************************************
+//Promises and async/await
+https://glm2lf.csb.app/
+https://codesandbox.io/s/gifted-pond-glm2lf?file=/src/index.js
