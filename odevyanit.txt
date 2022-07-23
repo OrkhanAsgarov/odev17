@@ -113,8 +113,100 @@ const reducer = (state = INITAL_STATE, action) => {
 
 //---------------------------------------------------------------------------------
 //ESModules (ES modülleri)
+//  export let isim = "Orhan";
+//  export const kullanici = {isim, yas: 33};
+//  export function merhaba(isim) {
+//    return `Merhaba, ${isim}`;
+//  }
+
+let isim = "Orhan";
+const kullanici = { isim, yas: 33 };
+function merhaba(isim) {
+  return `Merhaba, ${isim}`;
+}
+
+export { isim, kullanici, merhaba };
+
+//---------------------------------------------------------------------------------
+//Array Methods (dizi metodları)
+const urunler = [
+  { id: 1, name: "Kalem", fiyat: 5 },
+  { id: 2, name: "Defter", fiyat: 10 },
+  { id: 3, name: "Silgi", fiyat: 2 },
+  { id: 4, name: "Kalemtraş", fiyat: 7 }
+];
+
+let test1 = urunler.find((urun) => urun.fiyat > 5);
+console.log(test1);
+
+let test2 = urunler.some((urun) => urun.fiyat < 2);
+let test3 = urunler.some((urun) => urun.fiyat > 9);
+console.log(test2);
+console.log(test3);
+
+let test4 = urunler.every((urun) => urun.fiyat > 1);
+let test5 = urunler.every((urun) => urun.fiyat < 10);
+console.log(test4);
+console.log(test5);
+
+let test6 = urunler.some((urun) => urun.name.includes("Kalem"));
+let test7 = urunler.every((urun) => urun.name.includes("Kalem"));
+console.log(test6);
+console.log(test7);
+
+let test8 = urunler.map((urun) => `${urun.name} fiyati ${urun.fiyat} liradir.`);
+console.log(test8);
+
+// function urunGoster({urunListesi}){
+//   return urunListesi.map((urun)=> <li key={urun.id}>{urun.name}</li>);
+// }
+
+let test9 = urunler.filter((urun) => urun.name.includes("Kalem"));
+console.log(test9);
+
+let test10 = urunler
+  .filter((urun) => urun.name.includes("Kalem"))
+  .map((urun) => `${urun.name} fiyatı ${urun.fiyat} liradır.`);
+console.log(test10);
+
+let test11 = urunler.reduce((toplam, urun) => toplam + urun.fiyat, 0);
+console.log(test11);
+
+let test12 = urunler.reduce(
+  (isimler, urun) => isimler + " " + urun.name,
+  "Urun isimleri: "
+);
+console.log(test12);
+
+let test13 = urunler.reduce(
+  (yeniUrunListesi, urun) => [
+    ...yeniUrunListesi,
+    `${urun.name} ${urun.fiyat} liradir.`
+  ],
+  []
+);
+console.log(test13);
+
+//---------------------------------------------------------------------------------
+//Promises and async/await
+const veriGetir = new Promise((basarili, basarisiz) =>{
+  if veriBasariliSekildeGeldiyse{
+    basarili(getirilenVeri)
+  } else {
+    basarisiz {"veriyi getiremedik"}
+  }
+});
+
+const veri = veriGetir
+.then((veri) => console.log(""Basarili bir sekilde gelen veri:", veri"))
+.catch((hata) => console.log("Hatadan gelen mesaj:", hata));
 
 
+const veri = await veriGetir;
+async function veriDondur(){
+  const veri = await veriGetir;
+  return veri;
+}
 
-
+const veriDondur = async () => await veriGetir;
   
